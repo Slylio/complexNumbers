@@ -2,10 +2,21 @@ package complex;
 public class CartesianComplexNumber implements ComplexNumber {
     private double real;
     private double imaginary;
+    private double modulus;
+    private double argument;
 
     public CartesianComplexNumber(double real, double imaginary) {
         this.real=real;
         this.imaginary=imaginary;
+
+        modulus=Math.sqrt(Math.pow(real,2)+Math.pow(imaginary,2));
+
+        //cacul argument
+        double pi=0;
+        if (real<0){
+            pi=Math.PI;
+        }
+        argument=pi-Math.asin(imaginary/modulus);
     }
 
 
@@ -19,16 +30,16 @@ public class CartesianComplexNumber implements ComplexNumber {
     }
 
     public double getArgument() {
-        return 0;
+        return this.argument;
     }
 
     public double getModulus() {
-        return 0;
+        return this.modulus;
     }
 
     //setters
     public void setArgument(double argument){
-        ;
+        System.out.println(this+" is a cartesian number, you can only modify the real and imaginary part");
     }
 
     public void setImaginary(double imaginary) {
@@ -40,7 +51,7 @@ public class CartesianComplexNumber implements ComplexNumber {
     }
 
     public void setModulus(double modulus) {
-        ;
+        System.out.println(this+" is a cartesian number, you can only modify the real and imaginary part");
     }
     
     //calculs and display
@@ -61,15 +72,6 @@ public class CartesianComplexNumber implements ComplexNumber {
     }
 
     public ComplexNumber convert(){
-        double modulus=Math.sqrt(Math.pow(real,2)+Math.pow(imaginary,2));
-
-        //cacul argument
-        double pi=0;
-        if (real<0){
-            pi=Math.PI;
-        }
-        double argument=pi-Math.asin(imaginary/modulus);
-
         return new PolarComplexNumber(modulus,argument);
     }
 
@@ -80,11 +82,11 @@ public class CartesianComplexNumber implements ComplexNumber {
     //affichage du nombre
     public String toString(){
         String res="";
-        res+=Math.round(this.getReal());
+        res+=Round.toRound(this.getReal());
         if (this.getImaginary()>0){
             res+="+";
         }
-        res+=Math.round(this.getImaginary())+"i";
+        res+=Round.toRound(this.getImaginary())+"i";
         return res;
     }
 }

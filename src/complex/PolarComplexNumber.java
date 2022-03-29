@@ -3,23 +3,27 @@ package complex;
 public class PolarComplexNumber implements ComplexNumber {
     private double modulus;
     private double argument;
+    private double real;
+    private double imaginary;
 
     public PolarComplexNumber(double modulus, double argument){
         this.modulus=modulus;
         this.argument=argument;
+        real =modulus*Math.cos(argument);
+        imaginary=modulus*Math.sin(argument);
     }
 
     //getters
     public double getImaginary() {
-        return 0;
+        return this.imaginary;
     }
 
     public double getReal() {
-        return 0;
+        return this.real;
     }
 
     public double getArgument() {
-        return -this.argument;
+        return this.argument;
     }
 
     public double getModulus() {
@@ -32,11 +36,11 @@ public class PolarComplexNumber implements ComplexNumber {
     }
 
     public void setImaginary(double imaginary) {
-        ;
+        System.out.println(this+" is a polar number, you can only modify the modulus and the argument");
     }
 
     public void setReal(double real) {
-        ;
+        System.out.println(this+" is a polar number, you can only modify the modulus and the argument");
     }
 
     public void setModulus(double modulus) {
@@ -50,7 +54,7 @@ public class PolarComplexNumber implements ComplexNumber {
     }
 
     public void addDisplay(ComplexNumber c){
-        System.out.println("("+this.toString()+")"+"+"+"("+c.toString()+")"+" = "+ "("+this.add(c).toString()+")");
+        System.out.println(this.toString()+"+"+c.toString()+" = "+this.add(c).toString());
     }
 
     public ComplexNumber minus(ComplexNumber c){
@@ -59,11 +63,11 @@ public class PolarComplexNumber implements ComplexNumber {
     }
 
     public void minusDisplay(ComplexNumber c){
-        System.out.println("("+this.toString()+")"+"-"+"("+c.toString()+")"+" = "+ "("+this.minus(c).toString()+")");
+        System.out.println(this.toString()+"-"+c.toString()+" = "+ this.minus(c).toString());
     }
 
     public ComplexNumber convert(){
-        return new CartesianComplexNumber(modulus*Math.cos(argument),modulus*Math.sin(argument));
+        return new CartesianComplexNumber(real,imaginary);
     }
 
     public void convertDisplay(){
@@ -71,6 +75,6 @@ public class PolarComplexNumber implements ComplexNumber {
     }
 
     public String toString(){
-        return "("+getModulus()+";"+getArgument()+")";
+        return "("+Round.toRound(getModulus())+";"+Round.toRound(getArgument())+")";
     }
 }

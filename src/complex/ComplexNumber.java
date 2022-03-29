@@ -1,5 +1,6 @@
 package complex;
 public interface ComplexNumber {
+    
     //attributs
     double real=0;
     double imaginary=0;

@@ -7,6 +7,7 @@ public class GlobalTest {
         System.out.println("Lancement des calculs et des conversions test :");
         
         //calculs
+        System.out.println("--------------------GLOBAL OPERATIONS TEST---------------------");
         new CartesianComplexNumber(2, 3).addDisplay(new CartesianComplexNumber(4, 5));
         new CartesianComplexNumber(-2, 5).addDisplay(new CartesianComplexNumber(1, -3));
         new CartesianComplexNumber(-2, 5).minusDisplay(new CartesianComplexNumber(1, -3));
@@ -16,5 +17,6 @@ public class GlobalTest {
         new CartesianComplexNumber(Math.sqrt(3), Math.sqrt(3)).convertDisplay();
         new CartesianComplexNumber(Math.sqrt(2), Math.sqrt(3)).convertDisplay();
 
+        TestComplexNumber.main(args);
     }
 }
