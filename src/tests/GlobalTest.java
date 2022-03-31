@@ -18,5 +18,7 @@ public class GlobalTest {
         new CartesianComplexNumber(Math.sqrt(2), Math.sqrt(3)).convertDisplay();
 
         TestComplexNumber.main(args);
+        
+        TestFactory.main(args);
     }
 }
