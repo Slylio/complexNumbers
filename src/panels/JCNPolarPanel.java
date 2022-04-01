@@ -5,38 +5,39 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.AbstractAction;
 
-import complex.CartesianComplexNumber;
+import complex.PolarComplexNumber;
 import complex.ComplexNumber;
 
 import java.awt.event.ActionEvent;
 
 /**
- * JCNCartesianPanel est un JPanel permettant
+ * JCNPolarPanel est un JPanel permettant
  * d'afficher et d'éditer
- * la forme cartésienne d'un nombre complexe.
+ * la forme polaire d'un nombre complexe.
  * 
  * <pre>
  * *--------------*--------------*--------------
 *--------------*
- * | réel : | | Imaginaire : |
+ * | Modulus : | | Argument : |
 |
  * *--------------*--------------*--------------
 *--------------*
  * </pre>
- * @author Erik MAZOYER
+ * 
+ * @author Erik MAZOYER (and Emilio)
  * @version 1.0
  */
-public class JCNCartesianPanel extends JPanel {
+public class JCNPolarPanel extends JPanel {
     /**
      * Zone d'édition de la partie réelle du nombre
      * complexe affiché.
      */
-    private JTextField realTextField;
+    private JTextField modulusTextField;
     /**
      * Zone d'édition de la partie imaginaire du nombre
      * complexe affiché.
      */
-    private JTextField imaginaryTextField;
+    private JTextField argumentTextField;
     /**
      * Nombre complexe édité.
      */
@@ -51,11 +52,11 @@ public class JCNCartesianPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (complexNumber != null) {
                 try {
-                    double real = Double.parseDouble(realTextField.getText());
-                    double imaginary = Double.parseDouble(imaginaryTextField.getText());
-                    complexNumber.setReal(real);
+                    double modulus = Double.parseDouble(modulusTextField.getText());
+                    double argument = Double.parseDouble(argumentTextField.getText());
+                    complexNumber.setModulus(modulus);
 
-                    complexNumber.setImaginary(imaginary);
+                    complexNumber.setArgument(argument);
                 } catch (NumberFormatException nfex) {
                     nfex.printStackTrace();
                 }
@@ -65,27 +66,24 @@ public class JCNCartesianPanel extends JPanel {
 
     /**
      * Constructeur d'objets de classe
-     * JcartesianCNPanel
+     * JpolarCNPanel
      */
-    public JCNCartesianPanel() {
+    public JCNPolarPanel() {
         complexNumber = null;
         GridLayout gridLayout = new GridLayout(1, 4);
         setLayout(gridLayout);
+        JLabel modulusLabel = new JLabel("Réel : ");
+        modulusTextField = new JTextField();
+        JLabel argumentJLabel = new JLabel("Imaginaire : ");
+        argumentTextField = new JTextField();
+        this.add(modulusLabel);
+        this.add(modulusTextField);
+        this.add(argumentJLabel);
+        this.add(argumentTextField);
 
-        JLabel realLabel = new JLabel("Réel : ");
-        realTextField = new JTextField();
+        modulusTextField.addActionListener(updateComplexNumberAction);
 
-        JLabel imaginaryLabel = new JLabel("Imaginaire : ");
-        imaginaryTextField = new JTextField();
-        
-        this.add(realLabel);
-        this.add(realTextField);
-        this.add(imaginaryLabel);
-        this.add(imaginaryTextField);
-
-        realTextField.addActionListener(updateComplexNumberAction);
-
-        imaginaryTextField.addActionListener(updateComplexNumberAction);
+        argumentTextField.addActionListener(updateComplexNumberAction);
     }
 
     /**
@@ -104,16 +102,16 @@ public class JCNCartesianPanel extends JPanel {
      */
     private void updateDisplay() {
         if (complexNumber == null) {
-            realTextField.setText("");
-            realTextField.setEnabled(false);
-            imaginaryTextField.setText("");
-            imaginaryTextField.setEnabled(false);
+            modulusTextField.setText("");
+            modulusTextField.setEnabled(false);
+            argumentTextField.setText("");
+            argumentTextField.setEnabled(false);
         } else {
-            realTextField.setText(Double.toString(complexNumber.getReal()));
-            realTextField.setEnabled(true);
+            modulusTextField.setText(Double.toString(complexNumber.getModulus()));
+            modulusTextField.setEnabled(true);
 
-            imaginaryTextField.setText(Double.toString(complexNumber.getImaginary()));
-            imaginaryTextField.setEnabled(true);
+            argumentTextField.setText(Double.toString(complexNumber.getArgument()));
+            argumentTextField.setEnabled(true);
         }
     }
 
@@ -123,14 +121,14 @@ public class JCNCartesianPanel extends JPanel {
      * @param args arguments.
      */
     public static void main(String[] args) {
-        JFrame frame = new JFrame("JCNcartesianPanel");
+        JFrame frame = new JFrame("JCNPolarPanel");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        CartesianComplexNumber complexNumber = new CartesianComplexNumber(1, 1);
-        JCNCartesianPanel cartesianPanel = new JCNCartesianPanel();
+        PolarComplexNumber complexNumber = new PolarComplexNumber(1, 1);
+        JCNPolarPanel polarPanel = new JCNPolarPanel();
 
-        cartesianPanel.setEditedComplexNumber(complexNumber);
-        frame.getContentPane().add(cartesianPanel,
+        polarPanel.setEditedComplexNumber(complexNumber);
+        frame.getContentPane().add(polarPanel,
                 BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
