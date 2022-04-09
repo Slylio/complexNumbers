@@ -46,7 +46,6 @@ public class JCNCartesianPanel extends JPanel {
      * affiché.
      */
     Action updateComplexNumberAction = new AbstractAction() {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             if (complexNumber != null) {
@@ -54,7 +53,6 @@ public class JCNCartesianPanel extends JPanel {
                     double real = Double.parseDouble(realTextField.getText());
                     double imaginary = Double.parseDouble(imaginaryTextField.getText());
                     complexNumber.setReal(real);
-
                     complexNumber.setImaginary(imaginary);
                 } catch (NumberFormatException nfex) {
                     nfex.printStackTrace();
@@ -102,7 +100,7 @@ public class JCNCartesianPanel extends JPanel {
     /**
      * Mise à jour de l'affichage.
      */
-    private void updateDisplay() {
+    void updateDisplay() {
         if (complexNumber == null) {
             realTextField.setText("");
             realTextField.setEnabled(false);
