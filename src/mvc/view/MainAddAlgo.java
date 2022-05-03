@@ -1,15 +1,7 @@
 package mvc.view;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-
-import factory.CartesianComplexNumberFactory;
-import factory.ComplexNumberAbstractFactory;
-import mvc.controler.OObserver;
-import mvc.model.ComplexNumber;
-
-import java.awt.BorderLayout;
 
 /**
  * Algorithm d'ajout
@@ -39,7 +31,7 @@ public class MainAddAlgo {
 
 
         //add listPanel
-        
+
 
         JPanel globalPolarCart = new JPanel();
     
