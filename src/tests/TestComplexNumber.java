@@ -1,6 +1,6 @@
 package tests;
-import complex.CartesianComplexNumber;
-import complex.PolarComplexNumber;
+import mvc.model.CartesianComplexNumber;
+import mvc.model.PolarComplexNumber;
 
 public class TestComplexNumber {
     public static void main(String[] args) {

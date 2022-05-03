@@ -1,6 +1,7 @@
 package tests;
-import complex.CartesianComplexNumber;
 import java.lang.Math;
+
+import mvc.model.CartesianComplexNumber;
 
 public class GlobalTest {
     public static void main(String[] args) {

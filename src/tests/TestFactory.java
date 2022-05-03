@@ -1,9 +1,9 @@
 package tests;
 
-import complex.CartesianComplexNumber;
-import complex.PolarComplexNumber;
 import factory.CartesianComplexNumberFactory;
 import factory.PolarComplexNumberFactory;
+import mvc.model.CartesianComplexNumber;
+import mvc.model.PolarComplexNumber;
 
 public class TestFactory {
     public static void main(String[] args) {

@@ -1,5 +1,5 @@
 package factory;
-import complex.*;
+import mvc.model.*;
 
 public class CartesianComplexNumberFactory implements ComplexNumberAbstractFactory {
 

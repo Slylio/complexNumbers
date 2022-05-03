@@ -1,4 +1,4 @@
-package complex;
+package mvc.model;
 
 public class PolarComplexNumber implements ComplexNumber {
     private double modulus;

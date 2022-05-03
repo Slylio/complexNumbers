@@ -1,4 +1,4 @@
-package complex;
+package mvc.model;
 public class CartesianComplexNumber implements ComplexNumber {
     private double real;
     private double imaginary;
