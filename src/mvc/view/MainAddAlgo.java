@@ -3,6 +3,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import mvc.controler.OObserver;
+
 /**
  * Algorithm d'ajout
  */
@@ -14,57 +16,47 @@ public class MainAddAlgo extends JFrame {
      */
 
     private String moduleString,argumentString,realString,imaString;
-
-    public MainAddAlgo(){
-        moduleString="0";
-        argumentString="0";
-        realString="0";
-        imaString="0";
-
-        JFrame frame = new JFrame();
-
-        JPanel globalCartPanel = new JPanel();
+    private ComplexPanel cartPanel1,cartPanel2,cartPanel3,polarCart1,polarCart2,polarCart3;
+    public MainAddAlgo(OObserver o){
         JLabel plus = new JLabel("+");
         JLabel equal = new JLabel("=");
 
         
 
-        ComplexPanel cartPanel1 = new ComplexPanel("real", "imaginary", realString,imaString);
-        ComplexPanel cartPanel2 = new ComplexPanel("real", "imaginary", realString,imaString);
-        ComplexPanel cartPanel3 = new ComplexPanel("real", "imaginary", realString,imaString);
+        ComplexPanel cartPanel1 = new ComplexPanel("real", "imaginary", "0","0");
+        ComplexPanel cartPanel2 = new ComplexPanel("real", "imaginary", "0","0");
+        ComplexPanel cartPanel3 = new ComplexPanel("real", "imaginary", "0","0");
 
-        globalCartPanel.add(cartPanel1.getPanel());
-        globalCartPanel.add(plus);
-        globalCartPanel.add(cartPanel2.getPanel());
-        globalCartPanel.add(equal);
-        globalCartPanel.add(cartPanel3.getPanel());
-
-
-        //add listPanel
+        this.add(cartPanel1.getPanel());
+        this.add(plus);
+        this.add(cartPanel2.getPanel());
+        this.add(equal);
+        this.add(cartPanel3.getPanel());
 
 
-        JPanel globalPolarCart = new JPanel();
-        
+        //add listPanel      
         
 
-        ComplexPanel polarCart1 = new ComplexPanel("Module", "Argument", moduleString,argumentString);
-        ComplexPanel polarCart2 = new ComplexPanel("Module", "Argument", moduleString,argumentString);
-        ComplexPanel polarCart3 = new ComplexPanel("Module", "Argument", moduleString,argumentString);
+        ComplexPanel polarCart1 = new ComplexPanel("Module", "Argument", "0","0");
+        ComplexPanel polarCart2 = new ComplexPanel("Module", "Argument", "0","0");
+        ComplexPanel polarCart3 = new ComplexPanel("Module", "Argument", "0","0");
 
-        globalPolarCart.add(polarCart1.getPanel());
-        globalPolarCart.add(plus);
-        globalPolarCart.add(polarCart2.getPanel());
-        globalPolarCart.add(equal);
-        globalPolarCart.add(polarCart3.getPanel());
+        this.add(polarCart1.getPanel());
+        this.add(plus);
+        this.add(polarCart2.getPanel());
+        this.add(equal);
+        this.add(polarCart3.getPanel());
         
         
-        frame.add(globalCartPanel);
+        cartPanel1.addObserver(o);
+        polarCart3.addObserver(o);
+        cartPanel2.addObserver(o);
+        cartPanel3.addObserver(o);
+        polarCart1.addObserver(o);
+        polarCart2.addObserver(o);
 
-        //add listPanel
-
-        frame.add(globalPolarCart);
-        frame.pack();
-        frame.setVisible(true);
+        this.pack();
+        this.setVisible(true);
     }
 
     public String getImaString(){
@@ -97,9 +89,23 @@ public class MainAddAlgo extends JFrame {
     public void setRealString(String realString) {
         this.realString = realString;
     }
-
-    public JPanel getPanel(int n){
-        return (JPanel)this.getComponent(n);
-    }
     
+    public ComplexPanel getPanel(int i){
+        switch (i){
+            case 0:
+                return cartPanel1;
+            case 1:
+                return cartPanel2;
+            case 2:
+                return cartPanel3;
+            case 3: 
+                return polarCart1;
+            case 4: 
+                return polarCart2;
+            case 5: 
+                return polarCart3;
+            default:
+                return null;
+        }
+    }
 }

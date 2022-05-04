@@ -1,7 +1,5 @@
 package mvc.controler;
-
-import javax.swing.JPanel;
-
+import mvc.model.CartesianComplexNumber;
 import mvc.model.ComplexNumber;
 import mvc.view.MainAddAlgo;
 public class OEngine implements OObserver{
@@ -9,36 +7,28 @@ public class OEngine implements OObserver{
     MainAddAlgo main;
 
     public OEngine(){
-        main= new MainAddAlgo();
-        c1=setComplex(c1, main);
-        c2=setComplex(c2, main);
-        c3=c1.add(c2);
+        main= new MainAddAlgo(this);
+        c1=new CartesianComplexNumber(0, 0);
+        c2=new CartesianComplexNumber(0, 0);
+    }
+
+    public static void main(String[] args) {
+        new OEngine();
     }
     
     @Override
-    public void Onotify() {
-        refreshStrings(main);
-    }
+    public void Oupdate() {
+        Double fieldReal1=main.getPanel(0).getFieldLeft();
+        Double fieldIm1=main.getPanel(0).getFieldRight();
+        Double fieldReal2=main.getPanel(0).getFieldLeft();
+        Double fieldIm2=main.getPanel(0).getFieldRight();
 
-    public ComplexNumber setComplex(ComplexNumber c,MainAddAlgo main){
-        c.setReal(Integer.parseInt(main.getRealString()));
-        c.setImaginary(Integer.parseInt(main.getImaString()));
-        c.setModulus(Integer.parseInt(main.getModuleString()));
-        c.setArgument(Integer.parseInt(main.getArgumentString()));
-        return c;
-    }
+        c1.setReal(fieldReal1);
+        c1.setImaginary(fieldIm1);
 
-    public void refreshStrings(MainAddAlgo main){
-        JPanel globalCartPanel=main.getPanel(0);
-        JPanel globalPolarPanel=main.getPanel(1);
+        c2.setReal(fieldReal2);
+        c2.setImaginary(fieldIm2);
 
-        JPanel c1Panel=(JPanel) globalCartPanel.getComponent(0);
-        JPanel c2Panel=(JPanel) globalCartPanel.getComponent(1);
-        JPanel c3Panel=(JPanel) globalCartPanel.getComponent(2);
-
-        
-
-        main.setRealString(realString);
-
+        c3=c1.add(c2);
     }
 }
