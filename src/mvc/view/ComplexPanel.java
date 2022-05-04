@@ -1,7 +1,8 @@
 package mvc.view;
 
-import javax.swing.*;
+import java.awt.event.ActionEvent;
 
+import javax.swing.*;
 import mvc.controler.OObservable;
 import mvc.controler.OObserver;
 
@@ -19,4 +20,15 @@ public class ComplexPanel extends OObservable{
         panel.add(labelRight);
         panel.add(fieldRight);
     }
+
+    public JPanel getPanel(){
+        return panel;
+    }
+
+    Action updateComplexNumberAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            notifyObservers();
+        }
+    };
 }
