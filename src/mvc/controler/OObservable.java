@@ -15,7 +15,7 @@ public class OObservable{
 
     public void notifyObservers(){
         for (OObserver o : observables){
-            o.notify();
+            o.Onotify();
         }
     }
 }
