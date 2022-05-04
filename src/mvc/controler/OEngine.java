@@ -16,7 +16,7 @@ public class OEngine implements OObserver{
     
     @Override
     public void Onotify() {
-        c1=setComplex(c, main)
+        c1=setComplex(c1, main);
     }
 
     public ComplexNumber setComplex(ComplexNumber c,MainAddAlgo main){
