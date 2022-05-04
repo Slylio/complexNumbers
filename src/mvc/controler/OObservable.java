@@ -10,7 +10,7 @@ public class OObservable{
     }
 
     public void removeObserver(OObserver o){
-        observables.add(o);
+        observables.remove(o);
     }
 
     public void notifyObservers(){
