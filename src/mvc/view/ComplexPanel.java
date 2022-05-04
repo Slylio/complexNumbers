@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 import mvc.controler.OObservable;
-import mvc.controler.OObserver;
 
 public class ComplexPanel extends OObservable{
     JTextField fieldLeft,fieldRight;

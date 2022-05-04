@@ -6,22 +6,21 @@ import javax.swing.JPanel;
 /**
  * Algorithm d'ajout
  */
-public class MainAddAlgo {
+public class MainAddAlgo extends JFrame {
     /**
      * Main
      * 
      * @param args arguments.
      */
 
-    private static String moduleString,argumentString,realString,imaString;
+    private String moduleString,argumentString,realString,imaString;
 
     public MainAddAlgo(){
         moduleString="0";
         argumentString="0";
         realString="0";
         imaString="0";
-    }
-    public static void main(String[] args) {
+
         JFrame frame = new JFrame();
 
         JPanel globalCartPanel = new JPanel();
@@ -69,7 +68,7 @@ public class MainAddAlgo {
     }
 
     public String getImaString(){
-        return imaString;
+        return this.imaString;
     }
 
     public String getRealString(){
@@ -85,17 +84,22 @@ public class MainAddAlgo {
     }
 
     public void setArgumentString(String argumentString) {
-        MainAddAlgo.argumentString = argumentString;
+        this.argumentString = argumentString;
     }
 
     public void setImaString(String imaString) {
-        MainAddAlgo.imaString = imaString;
+        this.imaString = imaString;
     }
 
     public void setModuleString(String moduleString) {
-        MainAddAlgo.moduleString = moduleString;
+        this.moduleString = moduleString;
     }
     public void setRealString(String realString) {
-        MainAddAlgo.realString = realString;
+        this.realString = realString;
     }
+
+    public JPanel getPanel(int n){
+        return (JPanel)this.getComponent(n);
+    }
+    
 }
