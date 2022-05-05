@@ -1,10 +1,12 @@
 package mvc.controler;
-
-import java.util.Collection;
-
+import java.util.Vector;
 public class OObservable{
-    Collection<OObserver> observables;
+    Vector<OObserver> observables;
 
+    public OObservable(){
+        observables=new Vector<OObserver>();
+    }
+    
     public void addObserver(OObserver o){
         observables.add(o);
     }

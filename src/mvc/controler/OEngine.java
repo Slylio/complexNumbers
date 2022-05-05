@@ -18,17 +18,21 @@ public class OEngine implements OObserver{
     
     @Override
     public void Oupdate() {
+        System.out.println("Changement.");
+        
+        //on va chercher les données
         Double fieldReal1=main.getPanel(0).getFieldLeft();
         Double fieldIm1=main.getPanel(0).getFieldRight();
         Double fieldReal2=main.getPanel(0).getFieldLeft();
         Double fieldIm2=main.getPanel(0).getFieldRight();
 
+        //on modifie en conséquences
         c1.setReal(fieldReal1);
         c1.setImaginary(fieldIm1);
 
         c2.setReal(fieldReal2);
         c2.setImaginary(fieldIm2);
 
-        c3=c1.add(c2);
+        c3=c1.add(c2);        
     }
 }

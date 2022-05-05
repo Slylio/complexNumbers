@@ -1,7 +1,8 @@
 package mvc.view;
 
 import java.awt.event.ActionEvent;
-
+import java.awt.Color;
+import java.awt.GridLayout;
 import javax.swing.*;
 import mvc.controler.OObservable;
 
@@ -16,15 +17,21 @@ public class ComplexPanel extends OObservable{
         labelRight=new JLabel();
         panel=new JPanel();
         
+        panel.setLayout(new GridLayout(1,4));
+        //panel.setSize(new Dimension(100,100));
+
         fieldLeft.setText(JText1);
         fieldRight.setText(JText2);
         labelLeft.setText(str1);
         labelRight.setText(str2);
 
+        panel.setBackground(Color.green);
         panel.add(labelLeft);
         panel.add(fieldLeft);
         panel.add(labelRight);
         panel.add(fieldRight);
+
+        panel.setVisible(true);
     }
 
     public JPanel getPanel(){
